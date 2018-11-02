@@ -5,18 +5,21 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.demo.spring.entity.Emp;
+import com.demo.spring.repo.EmpRepository;
 
 @Service
+@Transactional
 public class HrService {
 	
 	@Autowired
-	EmpDao dao;
+	EmpRepository dao;
 
 	public String registerEmp(int id, String name, String city, double salary) {
-		String resp = dao.save(new Emp(id, name, city, salary));
-		return resp;
+		Emp e = dao.save(new Emp(id, name, city, salary));
+		return "Saved";
 	}
 
 	public List<String> listAllEmps() {

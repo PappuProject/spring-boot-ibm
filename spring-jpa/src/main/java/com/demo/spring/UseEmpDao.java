@@ -7,13 +7,14 @@ public class UseEmpDao {
 
 	public static void main(String[] args) {
 	
-		ApplicationContext ctx= new AnnotationConfigApplicationContext(JdbcConfig.class);
+		ApplicationContext ctx= new AnnotationConfigApplicationContext(JpaConfig.class);
 
 		HrService service=ctx.getBean(HrService.class);
 		
-		System.out.println(service.registerEmp(201, "Ramesh", "Chennai", 37000));
+		System.out.println(service.registerEmp(202, "Kamal", "Chennai", 67000));
 		
 		for(String s:service.listAllEmps()) {
+			
 			System.out.println(s);
 		}
 	}
